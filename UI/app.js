@@ -99,3 +99,44 @@ $(document).ready(function() {
 
     init();
 });
+
+$(document).ready(function() {
+    // Initialize Dropzone
+    Dropzone.autoDiscover = false;
+    var myDropzone = new Dropzone("#dropzone", {
+        url: "/file-upload",
+        maxFiles: 1,
+        acceptedFiles: "image/*",
+        init: function() {
+            this.on("success", function(file, response) {
+                // Handle the response from the server
+                console.log(response);
+                // Assuming the response contains the classification results
+                updateTable(response);
+            });
+            this.on("error", function(file, message) {
+                // Handle errors
+                $("#error").text(message).show();
+            });
+        }
+    });
+
+    // Handle the classify button click
+    $("#submitBtn").click(function() {
+        if (myDropzone.files.length === 0) {
+            $("#error").text("Please upload an image first.").show();
+        } else {
+            myDropzone.processQueue();
+        }
+    });
+
+    // Function to update the table with classification results
+    function updateTable(results) {
+        $("#score_lionel_messi").text(results.lionel_messi);
+        $("#score_maria_sharapova").text(results.maria_sharapova);
+        $("#score_roger_federer").text(results.roger_federer);
+        $("#score_serena_williams").text(results.serena_williams);
+        $("#score_virat_kohli").text(results.virat_kohli);
+        $("#error").hide();
+    }
+});

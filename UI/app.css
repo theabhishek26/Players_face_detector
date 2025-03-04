@@ -53,3 +53,121 @@
   background-color: #4CAF50;
   color: white;
 }
+
+/* Additional CSS for interactivity and responsiveness */
+
+/* Hover effect on cards */
+.card-wrapper:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Button styling */
+#submitBtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#submitBtn:hover {
+  background-color: #45a049;
+}
+
+/* Error message styling */
+.error {
+  font-family: MerriweatherRegular;
+  font-size: 24px;
+  line-height: initial;
+  color: red;
+  text-align: center;
+  display: none; /* Hidden by default */
+}
+
+/* Table styling */
+#classTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#classTable td, #classTable th {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+#classTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#classTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#classTable tr:hover {
+  background-color: #ddd;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .custom-circle-image {
+      width: 20vw;
+      height: 20vw;
+  }
+
+  .card-title {
+      font-size: 18px;
+  }
+
+  .card-text {
+      font-size: 16px;
+  }
+
+  #submitBtn {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .error {
+      font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-circle-image {
+      width: 30vw;
+      height: 30vw;
+  }
+
+  .card-title {
+      font-size: 16px;
+  }
+
+  .card-text {
+      font-size: 14px;
+  }
+
+  .error {
+      font-size: 18px;
+  }
+}
+
+.navbar-brand {
+  font-size: 24px;
+  color: blue !important;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif; /* Custom font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+}
+
+.navbar-brand:hover {
+  color: darkblue !important; /* Change color on hover */
+}
