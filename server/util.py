@@ -4,6 +4,7 @@ import numpy as np
 import base64
 import cv2
 from wavelet import w2d
+import os
 
 __class_name_to_number = {}
 __class_number_to_name = {}
@@ -35,20 +36,23 @@ def classify_image(image_base64_data, file_path=None):
 def class_number_to_name(class_num):
     return __class_number_to_name[class_num]
 
+ARTIFACTS_PATH = os.path.join(os.path.dirname(__file__), "artifacts")
+
 def load_saved_artifacts():
-    print("loading saved artifacts...start")
-    global __class_name_to_number
-    global __class_number_to_name
-
-    with open("./artifacts/class_dictionary.json", "r") as f:
-        __class_name_to_number = json.load(f)
-        __class_number_to_name = {v:k for k,v in __class_name_to_number.items()}
-
-    global __model
-    if __model is None:
-        with open('./artifacts/saved_model.pkl', 'rb') as f:
-            __model = joblib.load(f)
-    print("loading saved artifacts...done")
+    with open(os.path.join(ARTIFACTS_PATH, "class_dictionary.json"), "r") as f:
+        print("loading saved artifacts...start")
+        global __class_name_to_number
+        global __class_number_to_name
+    
+        with open("./artifacts/class_dictionary.json", "r") as f:
+            __class_name_to_number = json.load(f)
+            __class_number_to_name = {v:k for k,v in __class_name_to_number.items()}
+    
+        global __model
+        if __model is None:
+            with open('./artifacts/saved_model.pkl', 'rb') as f:
+                __model = joblib.load(f)
+        print("loading saved artifacts...done")
 
 
 def get_cv2_image_from_base64_string(b64str):
