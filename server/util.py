@@ -36,10 +36,12 @@ def classify_image(image_base64_data, file_path=None):
 def class_number_to_name(class_num):
     return __class_number_to_name[class_num]
 
-ARTIFACTS_PATH = os.path.join(os.path.dirname(__file__), "artifacts")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+artifacts_path = os.path.join(current_dir, "artifacts")
 
 def load_saved_artifacts():
-    with open(os.path.join(ARTIFACTS_PATH, "class_dictionary.json"), "r") as f:
+    class_dict_path = os.path.join(artifacts_path, "class_dictionary.json")
+    with open(class_dict_path, "r") as f:
         print("loading saved artifacts...start")
         global __class_name_to_number
         global __class_number_to_name
